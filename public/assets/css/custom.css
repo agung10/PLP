@@ -1,0 +1,54 @@
+#table_previous {
+	margin-right: 2rem;
+}
+.table td:first-child, .table th:first-child, .table tr:first-child {
+    padding-left: 10px;
+}
+
+.menu-item .menu-link .menu-icon {
+	font-size: 1.2rem;
+}
+
+.note-toolbar.card-header {
+    justify-content: flex-start;
+}
+
+.note-btn.active i {
+    color: #009ef7 !important;
+}
+
+.lightbox-basic {
+    border: 2px solid #f5f8fa;
+}
+
+.note-frame.fullscreen {
+    --bs-card-spacer-y: 1rem;
+    --bs-card-spacer-x: 1rem;
+    --bs-card-title-spacer-y: 0.5rem;
+    --bs-card-border-width: 1px;
+    --bs-card-border-color: #eff2f5;
+    --bs-card-border-radius: 0.625rem;
+    --bs-card-box-shadow: 0px 0px 20px 0px rgba(76, 87, 125, 0.02);
+    --bs-card-inner-border-radius: calc(0.625rem - 1px);
+    --bs-card-cap-padding-y: 0.5rem;
+    --bs-card-cap-padding-x: 1rem;
+    --bs-card-cap-bg: transparent;
+    --bs-card-bg: #ffffff;
+    --bs-card-img-overlay-padding: 1rem;
+    --bs-card-group-margin: 0.75rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    height: var(--bs-card-height);
+    word-wrap: break-word;
+    background-color: var(--bs-card-bg);
+    background-clip: border-box;
+    border: var(--bs-card-border-width) solid var(--bs-card-border-color);
+    border-radius: var(--bs-card-border-radius);
+    box-shadow: var(--bs-card-box-shadow);
+}
+
+.note-toolbar {
+    background-color: var(--kt-input-solid-bg) !important;
+}
