@@ -27,7 +27,8 @@ class PenggunaanController extends Controller
     public function create()
     {
         $dataPenggunaan = Penggunaan::pluck('pelanggan_id');
-        $dataPelanggan  = Pelanggan::whereNotIn('pelanggan_id', $dataPenggunaan)->get();
+        if (\Auth::user()->user_id == 1) $dataPelanggan  = Pelanggan::whereNotIn('pelanggan_id', $dataPenggunaan)->get();
+        else $dataPelanggan  = Pelanggan::where('user_id', \Auth::user()->user_id)->whereNotIn('pelanggan_id', $dataPenggunaan)->get();
 
         $link = (\Auth::user()->user_id == 1) ? 'penggunaan.store' : 'penggunaan-pelanggan.store';        
         return view('website.penggunaan.create', compact('dataPelanggan', 'link'));
