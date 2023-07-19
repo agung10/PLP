@@ -15,12 +15,14 @@ class CreatePembayaranTable extends Migration
     {
         Schema::create('pembayaran', function (Blueprint $table) {
             $table->id('pembayaran_id');
-            $table->integer('tagihan_id');
+            $table->unsignedBigInteger('tagihan_id');
             $table->date('tgl_pembayaran')->nullable();
             $table->integer('biaya_admin');
             $table->integer('total_bayar');
             $table->integer('pelanggan_bayar')->nullable();
             $table->timestamps();
+
+            $table->foreign('tagihan_id')->references('tagihan_id')->on('tagihan')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

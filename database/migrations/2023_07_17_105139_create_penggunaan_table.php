@@ -15,11 +15,13 @@ class CreatePenggunaanTable extends Migration
     {
         Schema::create('penggunaan', function (Blueprint $table) {
             $table->id('penggunaan_id');
-            $table->integer('pelanggan_id');
+            $table->unsignedBigInteger('pelanggan_id');
             $table->date('waktu');
             $table->string('meter_awal', 10);
             $table->string('meter_akhir', 10);
             $table->timestamps();
+
+            $table->foreign('pelanggan_id')->references('pelanggan_id')->on('pelanggan')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

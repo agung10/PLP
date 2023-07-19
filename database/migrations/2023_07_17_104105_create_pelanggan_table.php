@@ -16,11 +16,13 @@ class CreatePelangganTable extends Migration
         Schema::create('pelanggan', function (Blueprint $table) {
             $table->id('pelanggan_id');
             $table->string('kode_pelanggan', 100);
-            $table->integer('user_id');
+            $table->unsignedBigInteger('user_id');
             $table->string('no_kwh', 50);
             $table->text('alamat');
             $table->integer('tarif_id');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('user_id')->on('user')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
