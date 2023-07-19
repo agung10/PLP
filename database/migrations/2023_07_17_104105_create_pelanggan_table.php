@@ -19,10 +19,11 @@ class CreatePelangganTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('no_kwh', 50);
             $table->text('alamat');
-            $table->integer('tarif_id');
+            $table->unsignedBigInteger('tarif_id');
             $table->timestamps();
 
             $table->foreign('user_id')->references('user_id')->on('user')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('tarif_id')->references('tarif_id')->on('tarif')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
