@@ -14,8 +14,6 @@ class TarifListrikSeeder extends Seeder
      */
     public function run()
     {
-        Tarif::truncate();
-
         Tarif::create([
             'daya'         => 450,
             'tarif_perkwh' => 415,
