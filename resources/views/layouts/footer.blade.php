@@ -5,7 +5,7 @@
         <!--begin::Copyright-->
         <div class="text-dark order-2 order-md-1">
             <span class="text-muted fw-semibold me-1">2023©</span>
-            <a href="javascript:;" target="_blank" class="text-gray-800 text-hover-primary">Ayu Intan Putri Maharani</a>
+            <a href="javascript:;" target="_blank" class="text-gray-800 text-hover-primary">Fashya Alya Firmansyah</a>
         </div>
         <!--end::Copyright-->
     </div>
