@@ -14,8 +14,15 @@
         <!--begin::Logo image-->
         <!--begin::Logo image-->
         <a href="{{ url('') }}">
-            <div class="app-sidebar-logo-default text-white text-center text-uppercase fs-3 fw-bold">
-                Pembayaran Listrik Pascabayar
+            <div class="row">
+                <div class="col-3 px-0">
+                    <img src="https://www.arindo.net/images/logo-pln.png" alt="" width="60">
+                </div>
+                <div class="col-9">
+                    <div class="app-sidebar-logo-default text-uppercase fw-bold mt-4">
+                        Pembayaran Listrik Pascabayar
+                    </div>
+                </div>
             </div>
         </a>
         <!--end::Logo image-->

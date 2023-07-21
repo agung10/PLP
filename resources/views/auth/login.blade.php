@@ -19,7 +19,7 @@
     <!--end::Head-->
 
     <!--begin::Body-->
-    <body data-kt-name="metronic" id="kt_body" class="app-blank app-blank bgi-size-cover bgi-position-center bgi-no-repeat" style="background-image: url(assets/media/auth/bg10-dark.jpeg);">
+    <body data-kt-name="metronic" id="kt_body" class="app-blank app-blank bgi-size-cover bgi-position-center bgi-no-repeat" style="background-image: url(assets/media/auth/bg10.jpeg);">
         <!--begin::Theme mode setup on page load-->
         <script>if ( document.documentElement ) { const defaultThemeMode = "system"; const name = document.body.getAttribute("data-kt-name"); let themeMode = localStorage.getItem("kt_" + ( name !== null ? name + "_" : "" ) + "theme_mode_value"); if ( themeMode === null ) { if ( defaultThemeMode === "system" ) { themeMode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; } else { themeMode = defaultThemeMode; } } document.documentElement.setAttribute("data-theme", themeMode); }</script>
         <!--end::Theme mode setup on page load-->
@@ -35,13 +35,14 @@
                     <!--begin::Aside-->
                     <div class="d-flex flex-column">
                         <center>
-                            <a href="https://assets-a1.kompasiana.com/items/album/2015/11/08/cara-bayar-listrik-prabayar-token-secara-online-ngak-pake-ribet-563ec9a57893731407c8125b.png" class="mb-7">
-                                <img alt="Logo" src="https://assets-a1.kompasiana.com/items/album/2015/11/08/cara-bayar-listrik-prabayar-token-secara-online-ngak-pake-ribet-563ec9a57893731407c8125b.png" width="200" />
+                            <a href="https://www.arindo.net/images/logo-pln.png" class="mb-7">
+                                <img alt="Logo" src="https://www.arindo.net/images/logo-pln.png" width="200" />
                             </a>
-                            <hr />
-                            <h1 class="text-white fw-bold m-0">PLP (Pembayaran Listrik Pascabayar)</h1>
-
-                            <hr />
+                            <h1 class="text-dark fw-bold m-0">
+                                PLP
+                                <hr />
+                                (Pembayaran Listrik Pascabayar)
+                            </h1>
                         </center>
                         <!--end::Title-->
                     </div>
@@ -53,14 +54,14 @@
                     <!--begin::Card-->
                     <div class="card rounded-3 w-md-550px">
                         <!--begin::Card body-->
-                        <div class="card-body p-10 p-lg-20">
+                        <div class="card-body p-10 p-lg-20 rounded" style="box-shadow: 0.3rem 0.3rem #3D84A8, -0.3rem -0.3rem #48466D">
                             <!--begin::Form-->
                             <form id="form-login" class="kt-form" action="{{ route('login') }}" method="post">
                                 {{ csrf_field() }}
                                 <!--begin::Heading-->
                                 <div class="text-center mb-11">
                                     <!--begin::Title-->
-                                    <h1 class="text-dark fw-bolder mb-3">Sign In</h1>
+                                    <h1 class="text-dark fw-bolder mb-3">Selamat Datang</h1>
                                     <!--end::Title-->
                                 </div>
                                 <!--begin::Heading-->
@@ -96,9 +97,9 @@
 
                                 <!--begin::Submit button-->
                                 <div class="d-grid mb-10">
-                                    <button type="submit" id="kt_sign_in_submit" class="btn btn-primary">
+                                    <button type="submit" id="kt_sign_in_submit" class="btn btn-light-primary border border-1 border-primary">
                                         <!--begin::Indicator label-->
-                                        <span class="indicator-label">Sign In</span>
+                                        <span class="indicator-label">Masuk ke Website</span>
                                         <!--end::Indicator label-->
                                         <!--begin::Indicator progress-->
                                         <span class="indicator-progress">Please wait...
