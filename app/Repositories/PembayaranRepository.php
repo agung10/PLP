@@ -18,7 +18,12 @@ class PembayaranRepository extends BaseRepository
         $date2 = $request->date2 ?? date('Y-m-d');
 
         if (\Auth::user()->user_id == 1) {
-            $collection = $this->model->select('pembayaran_id', 'tagihan_id', 'tgl_pembayaran', 'biaya_admin', 'total_bayar')
+            $collection = $this->model->join('tagihan', 'tagihan.tagihan_id', 'pembayaran.tagihan_id')
+                        ->select('pembayaran_id', 'pembayaran.tagihan_id', 'tgl_pembayaran', 'biaya_admin', 'total_bayar')
+                        ->join('pelanggan', 'pelanggan.pelanggan_id', 'tagihan.pelanggan_id')
+                        ->when((\Auth::user()->user_id != 1), function ($q) {
+                            $q->where('pelanggan.user_id', \Auth::user()->user_id);
+                        })
                         ->when($date1 && $date2, function ($q) use ($date1, $date2) {
                             $q->whereDate('pembayaran.created_at', '>=' ,date('Y-m-d', strtotime($date1)));
                             $q->whereDate('pembayaran.created_at', '<=' ,date('Y-m-d', strtotime($date2)));
@@ -28,6 +33,10 @@ class PembayaranRepository extends BaseRepository
         else {
             $collection = $this->model->join('tagihan', 'tagihan.tagihan_id', 'pembayaran.tagihan_id')
                         ->select('pembayaran_id', 'pembayaran.tagihan_id', 'tgl_pembayaran', 'biaya_admin', 'total_bayar')
+                        ->join('pelanggan', 'pelanggan.pelanggan_id', 'tagihan.pelanggan_id')
+                        ->when((\Auth::user()->user_id != 1), function ($q) {
+                            $q->where('pelanggan.user_id', \Auth::user()->user_id);
+                        })
                         ->where('tagihan.status', '!=', 1)
                         ->when($date1 && $date2, function ($q) use ($date1, $date2) {
                             $q->whereDate('pembayaran.created_at', '>=' ,date('Y-m-d', strtotime($date1)));

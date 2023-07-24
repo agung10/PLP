@@ -38,7 +38,11 @@ class PelangganRepository extends BaseRepository
 
     public function pelangganDatatable()
     {
-        $collection = $this->model->select('pelanggan_id', 'kode_pelanggan', 'user_id', 'no_kwh', 'tarif_id')->orderBy('pelanggan_id', 'DESC');
+        $collection = $this->model->select('pelanggan_id', 'kode_pelanggan', 'user_id', 'no_kwh', 'tarif_id')
+                    ->when((\Auth::user()->user_id != 1), function ($q) {
+                        $q->where('pelanggan.user_id', \Auth::user()->user_id);
+                    })
+                    ->orderBy('pelanggan_id', 'DESC');
 
         return \DataTables::of($collection)
             ->addIndexColumn()

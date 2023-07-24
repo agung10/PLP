@@ -30,6 +30,10 @@ class TagihanRepository extends BaseRepository
         $date2 = $request->date2 ?? date('Y-m-d');
 
         $collection = $this->model->select('tagihan_id', 'pelanggan_id', 'waktu_tagihan', 'jmlh_meter', 'status')
+                    ->join('pelanggan', 'pelanggan.pelanggan_id', 'tagihan.pelanggan_id')
+                    ->when((\Auth::user()->user_id != 1), function ($q) {
+                        $q->where('pelanggan.user_id', \Auth::user()->user_id);
+                    })
                     ->when($date1 && $date2, function ($q) use ($date1, $date2) {
                         // $q->whereDate('waktu_tagihan', '>=' ,date("Y-m-d", strtotime("+1 month", strtotime($date1))));
                         // $q->whereDate('waktu_tagihan', '<=' ,date("Y-m-d", strtotime("+1 month", strtotime($date2))));

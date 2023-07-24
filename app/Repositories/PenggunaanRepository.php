@@ -18,6 +18,10 @@ class PenggunaanRepository extends BaseRepository
         $date2 = $request->date2 ?? date('Y-m-d');
 
         $collection = $this->model->select('penggunaan_id', 'pelanggan_id', 'waktu', 'meter_awal', 'meter_akhir')
+                    ->join('pelanggan', 'pelanggan.pelanggan_id', 'penggunaan.pelanggan_id')
+                    ->when((\Auth::user()->user_id != 1), function ($q) {
+                        $q->where('pelanggan.user_id', \Auth::user()->user_id);
+                    })
                     ->when($date1 && $date2, function ($q) use ($date1, $date2) {
                         $q->whereDate('penggunaan.created_at', '>=' ,date('Y-m-d', strtotime($date1)));
                         $q->whereDate('penggunaan.created_at', '<=' ,date('Y-m-d', strtotime($date2)));
